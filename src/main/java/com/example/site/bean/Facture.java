@@ -1,6 +1,7 @@
 package com.example.site.bean;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 
 import jakarta.persistence.Entity;
@@ -11,8 +12,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter @Setter @NoArgsConstructor
 public class Facture {
 
 	@Id
@@ -20,8 +25,8 @@ public class Facture {
 	private Long id;
 	private String ref;
 	private Date date;
-	private BigDecimal montantHT;
-	private BigDecimal montantTTC;
+	private double montantHT;
+	private double montantTTC;
 	private int tva;
 	
 	@ManyToOne
@@ -29,78 +34,14 @@ public class Facture {
 	
 	@ManyToMany
 	@JoinTable(
-			name = "productBought",
+			name = "facture_produit",
 			joinColumns = @JoinColumn(name = "facture_id"),
-			inverseJoinColumns = @JoinColumn(name = "produit_id"))
-	private Produit produit;
+			inverseJoinColumns = @JoinColumn(name = "produit_id")
+	)
+	private ArrayList<Produit> produits;
 	
 	
 
-	public Long getId() {
-		return id;
-	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getRef() {
-		return ref;
-	}
-
-	public void setRef(String ref) {
-		this.ref = ref;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-	public BigDecimal getMontantHT() {
-		return montantHT;
-	}
-
-	public void setMontantHT(BigDecimal montantHT) {
-		this.montantHT = montantHT;
-	}
-
-	public BigDecimal getMontantTTC() {
-		return montantTTC;
-	}
-
-	public void setMontantTTC(BigDecimal montantTTC) {
-		this.montantTTC = montantTTC;
-	}
-
-	public int getTva() {
-		return tva;
-	}
-
-	public void setTva(int tva) {
-		this.tva = tva;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public Produit getProduit() {
-		return produit;
-	}
-
-	public void setProduit(Produit produit) {
-		this.produit = produit;
-	}
-	
-	
-	
 	
 }
