@@ -14,7 +14,7 @@ import com.example.site.bean.Produit;
 import com.example.site.service.ProduitService;
 
 @RestController
-@RequestMapping("/ecom-api/user")
+@RequestMapping("/ecom-api/produit")
 public class ProduitRest {
 	
 	@Autowired

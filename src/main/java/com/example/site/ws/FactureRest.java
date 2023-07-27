@@ -14,7 +14,7 @@ import com.example.site.bean.Facture;
 import com.example.site.service.FactureService;
 
 @RestController
-@RequestMapping("/ecom-api/user")
+@RequestMapping("/ecom-api/facture")
 public class FactureRest {
 	
 	@Autowired
